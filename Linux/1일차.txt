@@ -1,0 +1,133 @@
+
+ 1일차 - 1~6강.
+
+
+
+ # 리눅스를 배워야 하는가 ?
+
+개발자 입장.
+개발자는 OS를 사용하는 것이 아니라 소프트웨어를 사용하는 것이다.
+소프트웨어가 OS에 영향을 받는다.
+개발자가 사용하는 소프트웨어( IDE, WAS )의 대부분은 Linux에서 더 호환이 좋다.
+
+모바일.
+Android : Linux. ( 90% 내외 )
+iOS : Unix. ( 10% 내외 )
+Windows : Windows. ( 0.4% 내외 )
+
+미래 방향성.
+HTML을 통해 WEB기반으로 프로그램을 만들면 어느 OS든 실행할 수 있게된다.
+( REST API ?? )
+
+
+
+ # 어떤 리눅스를 배워야 하는가 ?
+
+리눅스 계보.
+Debian : Ubuntu를 포함하는 최근 가장 핫한 계열. ( 70%를 넘는다 )
+Red Hat : 몇년전까지 가장 핫했다. ( 2~3%로 떨어졌다 )
+Slackware.
+
+Ubuntu.
+Canonical Ltd라는 회사에서 만듦.
+현재 리눅스에서 가장 인기가 많다.
+6개월에 한 번정도 새로운 버전을 낸다. ( 빠른 업데이트 )
+
+
+
+ # 개발자가 알아야 할 리눅스의 필수 내용.
+
+Linux 설명.
+개발환경에서는 어떤 OS를 써도 상관없다.
+서비스 환경에서 Linux를 쓰려고 사용하는 것이다.
+
+학습내용.
+서비스 관리 -> Linux / Unix 역사 -> Linux 서버 설치 -> 파일 편집 -> 파일 관리 -> 사용자 관리 -> 프로세스 관리 
+-> Bash Shell -> 설치파일 관리 -> Telnet / SSH / FTP -> JAVA JDK 설치 -> Tomcat / MySQL -> 서비스 관리 
+
+
+
+ # 유닉스의 탄생과 운영체제의 의미.
+
+1969년 Multics Project.
+여러개의 프로그램을 동시에 사용하기 위한 프로젝트. ( OS 개념이 없없다 )
+컴퓨터에서 하나의 프로그램 실행을 위해 CD같은 테이프를 넣었다 뺏다 하였다.
+
+OS Operator System.
+여러가지 App을 갖고 있어 사용자의 원하는 App을 선택하는 입력을 받아서 실행한다.
+OS가 개발되면서 App은 하드웨어를 직접사용하지 않고 OS를 거쳐서 하드웨어에 접근된다.
+하드웨어가 변경되도 OS가 같으면 모든 App이 호환된다.
+
+C언어의 탄생.
+BCPL에서 앞글자를 따서 처음에 B언어가 만들어졌다.
+컴퓨터가 점점 성장하면서 bit수가 달라져서 B언어가 호환이 안되서 B언어를 수정하였다.
+B언어를 수정하는 과정에서 많이 변경되어 이전과 다른 이름인 C언어로 이름지었다.
+
+유닉스 Dennis Ritchie( 데니스 리치 )
+공동으로 사용하는 컴퓨터를 만든 것이다.
+Unix server에 데이터( 자원 )을 저장하고, server에 접속한 단말기로 데이터( 자원 )을 입출력한다.
+
+
+
+ # 오픈소스 유닉스의 탄생.
+
+AT&T 회사.
+1984년 7개의 회사로 분리되었다.
+컴퓨터 시스템의 판매 금지를 당했다.
+온전한 컴퓨터 제품을 만들어 팔 수는 없었지만 소스코드는 팔 수 있었음.
+
+POSIX Portable Operation System Interface.
+여러군대 팔려서 다양한 Unix가 발생하기 시작.
+다양한 Unix 인터페이스를 표준화하기 시작함. ( 유료 버전 )
+
+SVID AT&T System V Interface Definition.
+유닉스 벤더들은 호환성있는 유닉스 시스템을 만듬 ( 유료 버전 )
+
+GNU is not UNIX.
+FSF Free Software Foundation 설립.
+유닉스를 공짜로 배포할 수 있도록 유닉스 코드 전체를 다시 작성하기로 함.
+두 명으로 시작한 프로젝트는 나중에 수천 수백만명이 참여하는 프로젝트로 성장하게 됨.
+Unix Util은 기존 코드보다 안정화된 버전이 만들어지기도 함.
+Unix Kernel을 만드는 데 어려움을 겪었다.
+
+1991 Linux.
+Linus Torvalds가 윈도우에서 사용할 수 있는 Unix를 개발하였다.
+슈퍼컴퓨터가 아닌 일반 컴퓨터에서도 사용할 수 있는 Unix.
+이후 다양한 버전의 Linux가 생성되었다.
+
+
+
+ # 오픈소스에도 라이선스가 있다.
+
+OSI Open Source Definition.
+오픈 소스 정의.
+
+유명한 오픈 소스 라이선스들.
+Apache License 2.0
+GNU General Public License GPL
+GNU Library or "Lesser" General Public License LGPL.
+MIT License.
+Eclipse Public License.
+
+GNU General Public License GPL.
+GPL이 적용된 SW를 이용해 개량된 SW를 개발했을 경우, 개발한 SW의 소스코드 역시 공개해야 된다.
+전체 공개 SW의 70~80%가 GPL 라이센스이다.
+제약이 좀 많은 편이다.
+
+아파치 라이선스 2.0
+소스 코드를 공개할 의무가 없다.
+아파치에 의해 개발되었음에 대한 저작권 표시.
+제약이 조금 있는 편이다.
+
+MIT License.
+소스 코드를 공개할 의무가 없다.
+저작권 표시도 크게 없다.
+거의 아무런 제약이 없다.
+
+
+
+
+
+
+
+
