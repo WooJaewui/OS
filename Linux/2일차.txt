@@ -1,0 +1,28 @@
+
+ 2일차 - 7 ~ 8강.
+
+
+
+ # Virtual Box 설치.
+
+Virtual Box.
+Oracle에서 제공하는 무료 가상 컴퓨터.
+
+설치.
+oralce 홈페이지 접속 -> 다운로드 -> virualBox 검색 -> windows 다운로드 -> 설치.
+-> 새로만들기 -> Linux 검색 -> 버전 Ubuntu 64-bit 설정 -> 새 하드디스크 만들기
+-> VDI virtualBox에서만 사용하는 디스크 생성 -> 동적할당 -> 최대 GB설정
+-> 시동 디스크가 존재하지 않음 ( 리눅스를 설치해야됨 )
+
+
+
+ # 우분투 server 설치하기.
+
+다운.
+CANONICAL 홈페이지 접속 -> Ubuntu 이동 -> Ubuntu 18.04.6 LTS Server iso 다운.
+
+설치.
+virtualBox 설정 -> 저장소 -> 광학드라이브 iso파일 선택 -> done -> 설치 후 restart -> 로그인
+
+
+
