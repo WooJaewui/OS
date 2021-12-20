@@ -1,0 +1,53 @@
+
+ 3일차 - 9 ~ 10강.
+
+
+
+ # Linux 쉘과 프롬프트.
+
+Shell.
+OS와 사용자가 커뮤니케이션 하는 공간. ( 윈도우 - 탐색기, cmd )
+
+Shell의 종류.
+bash shell : 최초의 유닉스 쉘인 Bourne Shell과 호환되도록 만들어진 쉘. ( 리눅스 - Bourn Again Shell )
+csh : BSD 계열 유닉스 사용자들이 선호하는 쉘 ( 리눅스 - C shell )
+ksh : Unix System V 계열 유닉스 사용자들이 선호하는 쉘 ( 리눅스 - Kron shell )
+tsch : C shell과 호환되는 리눅스 쉘.
+ash : Bourne Shell과 호환되는 또 다른 리눅스 본쉘.
+
+권한.
+~$ : 일반권한. 
+~# : 관리자권한.
+
+root 권한 실행 ( sudo )
+$ sudo reboot
+$ sudo halt
+
+사용자 전환.
+$ sudo su - root : root 사용자로 전환.
+$ sudo su - : root 사용자로 전환.
+$ sudo su : root 사용자로 전환.
+
+
+
+ # 리눅스 파일 시스템.
+
+파일 구조.
+/ : 가장 최상위의 디렉토리 여러가지 디렉토리로 나뉘어진다.
+home : user의 의미를 갖는 디렉토리 - 사용자를 저장한다 ( cd /home -> ls )
+bin : 실행파일을 모아두는 장소. 
+sbin : admin의 실행파일을 모아두는 장소.
+media ( mnt ) : 장치를 연결해서 사용하는 디렉토리.
+usr : c드라이브 program files와 같은 역할로 여러가지 설치 폴더를 저장하는 디렉토리.
+etc : 윈도우 레지스트리같은 역할로 프로그램의 실행을 위한 설정들을 저장하는 디렉토리.
+var : 프로그램을 실행하면서 만들어지는 데이터를 저장하는 디렉토리.
+tmp : 임시로 데이터를 저장하는 디렉토리.
+sys : 시스템에 대한 설정을 저장하는 디렉토리.
+
+명령어.
+cd : change directory 디렉토리 경로 변경.
+ls : 현재 디렉토리의 리스트를 보여줌.
+ls -l : 현재 디렉토리의 리스트를 자세히 보여줌.
+
+
+
