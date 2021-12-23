@@ -1,0 +1,30 @@
+
+ 5일차 - 16강.
+
+
+
+ # 유용한 명령어.
+
+명령어.
+clear : 창 지우기.
+history : 지금까지 실행했던 내용들을 보여줌.
+!번호 : history에 나온 번호를 통해 다시 실행할 수 있다.
+cat : 파일 실행하기.
+echo : 어떠한 값을 출력.
+echo "Hello" > test : Hello를 test파일에 넣는다. ( 덮어쓰기 - 기존 내용이 사라짐 )
+echo "Hello" >> test : Hello를 test파일에 추가한다. ( 추가 )
+grep : 어떠한 값을 검색할때 사용. ( find랑 비슷 )
+cat test | grep "he" : test 중 he가 들어간 것을 검색한다.
+ls -l | more : 리스트를 enter를 통해 내려가면서 볼 수 있다. ( less도 가능 - 끝내기 q )
+sort : 정렬. ( -r 역정렬 )
+; : 여러가지 명령어를 구분해서 한 줄에 실행할 수 있다.
+
+활용.
+명령어 : touch test1; echo "okay~" >> test1; cat test1
+결과 : okay~
+
+
+
+
+
+
