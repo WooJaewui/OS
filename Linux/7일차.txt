@@ -1,5 +1,5 @@
 
- 7일차 - 31 ~ 
+ 7일차 - 31 ~ 40강.
 
 
 
@@ -226,10 +226,18 @@ sudo update-java-alternatives -s java버전 ;
 심볼릭 링크 생성.
 ln -s 현재파일 링크파일경로 ;
 
+링크 파일 변경.
+sudo update-alternatives --confitg 링크파일이름 ; 
+바꿀번호 or Enter( 상태유지 )
 
+/etc/alternatives.
+링크 파일을 쉽게 변경할 수 있게 도와주는 링크 파일을 저장하는 디렉토리.
 
+링크 파일 변경할 수 있는 명령어 만들기.
+sudo update-alternatives --install 링크파일 실행명령어 실제파일 우선순위
 
-
+자바 버전 변경하기.
+updata-java-alternatives -s 자바버전 : 자바관련 update-alternatives를 한번에 변경해준다.
 
 
 
