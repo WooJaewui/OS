@@ -1,0 +1,239 @@
+
+ 7일차 - 31 ~ 
+
+
+
+ # 프롬프트 변경하기 ( PS1 )
+
+PS1.
+Prompt String으로 현재 프롬프트를 나타내는 형식을 확인할 수 있다.
+
+프롬프트 스트링 확인하기.
+echo $PS1
+
+프롬프트 스트링 변경하기.
+PS1="$" : 모든 프롬프트 스트링을 없애기.
+( 일시적으로 변경되서 다시 로그인하면 원래대로 돌아간다 )
+PS1="\d$" : 프롬프트에 현재날짜를 보여줌.
+
+프롬프트 스트링에 설정할 수 있는 명령어.
+구글에 "bash prompt escape"를 쳐본다.
+
+
+
+ # 출력 색상 변경하기 LS_COLORS.
+
+LS_COLORS
+LS : 리스트를 의미한다.
+
+파일 종류명.
+di = directory.
+fi = file.
+ln = symbolic link.
+pi = fifo file.
+so = socket file.
+.... 등
+
+색상 변경.
+LS_COLORS="파일종류명=0(색상);색상번호"
+
+LS_COLORS 옵션.
+구글에 "LS_COLORS"를 검색.
+파일종류, TYPE, 색상번호 등을 확인할 수 있다.
+
+
+
+ # 명령어 별칭 만들어 사용하기.
+
+명령어 확인하기.
+type 명령어이름 ;
+
+별칭만들기.
+alias 별칭이름='명령어 옵션';
+
+
+
+ # 리눅스 부팅 과정과 런 레벨.
+
+리눅스 부팅 순서.
+1. BIOS Basic Input Output System.
+2. Master Boot Record ( MBR )
+3. LILO or GRUB ( 운영체제 선택할 수 있게 도와주는 소프트웨어 )
+4. Kernel 
+5. init : process number 1 ( PID= 1 )
+	- /linuxrc : load modules / initialize devices / exites
+	- /sbin/init
+		- /etc/inittab : run boot scripts
+			- /etc/init.d/rcS
+				- /etc/rcS.d/S* scripts
+				- /etc/rc.boot/*
+6. Run Levels.
+
+안전모드.
+최소한의 서비스만 실행된다.
+
+Run Levels.
+0~6번까지 존재한다.
+2~5번까지는 거의 같다.
+
+Run Levels 확인.
+/etc/rc0~6
+로그인하면 rc3으로 설정.
+
+종료 방법.
+poweroff ( 다른 사용자가 있으면 꺼지지 않음 )
+shutdown, half, init 0
+
+재시작.
+reboot, shutdown, init 6
+
+종료/재시작.
+관련 옵션도 확인해보기.
+
+
+
+ # 프로필과 환경변수를 설정하는 방법.
+
+로그인 후 실행되는 스크립트 Run Commands.
+/etc/profile ( 모든 사용자에 적용되는 설정 )
+~/.profile ( 로그인한 사용자에 적용되는 설정 )
+
+/etc/profile.
+로그인할 때 실행된다.
+alias같은 명령어를 적어놓으면 설정한 명령어를 사용할 수 있다.
+
+/etc/profile.d
+alias같은 명령어를 스크립트 형식 파일로 만들어서 적으면 명령어를 사용할 수 있다.
+
+/home/사용자/.profile
+사용자에게만 원하는 설정을 할 수 있다.
+/home/bin 디렉토리를 만들면 사용자만 $PATH 환경변수 첫부분에 bin 디렉토리에 실행파일들을 추가한다.
+alias같은 명령어를 적어놓으면 사용자가 로그인 시 설정한 명령어를 사용할 수 있다.
+
+.sh.
+SHELL 파일을 의미한다.
+
+숨긴 파일 확인.
+ls -a : 숨긴 파일을 포함한 모든 파일 확인.
+
+쉘 shell.
+소프트웨어를 실행할 수 있게 도와주는 실행창.
+
+PAM Pluggable Authentication Modules.
+PAM을 이용해서 어떠한 인증을 하는 파일들은 /etc/environment를 이용한다.
+/etc/pam.d
+
+/etc/environment.
+데이터 파일.
+
+
+
+ # JDK 전역화하기.
+
+/usr 디렉토리.
+윈도우의 C드라이브 역할을 하는 디렉토리.
+모든 사용자가 사용하는 전역파일을 저장한다.
+
+파일 이동.
+mv 경로/파일이름 옮길경로 ;
+
+전역 환경변수 등록.
+sudo nano /etc/environment
+$PATH="/기존경로:/추가할경로" ;
+
+/etc/environment 실행.
+설정 후에 /etc/environment를 실행해야 적용된다.
+source /etc/environment ( 이대로 실행하면 ~/.profile이 빠져있다 )
+로그아웃 후 로그인.
+
+주의사항.
+기존에 만든 파일을 mv를 통해 전역파일로 이동한 경우 파일의 권한을 확인해줘야된다.
+
+
+
+ # Debian 설치 패키지 관리자.
+
+tree 패키지 다운로드.
+wget http://kr.archive.ubuntu.com/ubuntu/pool/universe/t/tree/tree_1.7.0-3_amd64.deb
+
+Debian 패키지 설치.
+sudo dpkg -i 패키지이름.deb 
+
+패키지 설치 확인.
+패키이지름 ( 예 : tree )
+
+Debian 패키지 확인.
+dpkg -l : 설치된 데비안 패키지 목록 확인.
+dpkg -L 패키지이름 : 패키지가 어디에 설치되어있는지 확인.
+sudo dpkg -r 패키지이름 : 패키지의 실행 파일 삭제.
+sudo dpkg -P 패키지이름 : 패키지의 실행 파일, 설정 파일 삭제.
+
+
+
+ # 향상된 패키지 관리 도구.
+
+APT Advanced Packaging Tool.
+우분투 패키지 저장소 /etc/apt/sources.list 디렉토리.
+APT를 통해 /etc/apt/sources.list에 저장된 패키지를 설치하거나,  /etc/apt/sources.list에 패키지를 저장할 수 있다.
+
+/etc/apt/sources.list 명령어.
+apt-get update : 목록 갱신.
+apt-get dist-update : 의존성 검사를 통한 목록 갱신.
+apt-get install 패키지이름 : 패키지 설치.
+apt-get remove 패키지이름 : 패키지 실행파일 삭제.
+apt-get purge 패키지이름 : 패키지 실행, 설지파일 제거.
+apt-cache pkgnames : 모든 패키지가 나옴.
+apt-cache search 패키지이름 : 패키지이름과 관련된 모든 패키지가 나옴.
+apt-cache show 패키지이름 : 패키지 자세히 보기.
+
+
+
+ # PPA를 이용한 JDK 설치하기.
+
+PPA Personal Package Archive.
+APT는 Canonical이 제공하는 패키지.
+APT( /etc/apt/sources.list )에 내가 필요한 패키지가 없을 때 PPA에 있는 패키지를 /etc/apt/sources.list에 저장가능.
+
+Launchpad.
+launchpadblog에서 PPA를 제공한다.
+
+PPA 패키지 APT에 저장하기.
+sudo add-apt-repository ppa:패키지이름
+sudo apt-get update 
+
+APT 간략한 명령어.
+apt install
+apt update 
+apt show
+apt search 
+... 등
+
+java 실행 버전 바꾸기.
+sudo update-java-alternatives -s java버전 ;
+
+
+
+ # 링크 관리 도구.
+
+실행파일을 아무장소에나 실행하기.
+1. 환경변수에 등록.
+2. 이미 환경변수에 등록되어 있는 /bin 디렉토리 같은 장소에 실행파일의 링크파일을 생성.
+
+링크 관리 예시.
+1. editor라는 이름의 편집기 실행 파일을 하나 만든다.
+2. 처음에 자주사용하는 nano를 링크로 연결하고, 필요할 때 vi, ed로 링크를 바꾼다.
+
+심볼릭 링크 생성.
+ln -s 현재파일 링크파일경로 ;
+
+
+
+
+
+
+
+
+
+
+
+
