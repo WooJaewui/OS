@@ -1,5 +1,5 @@
 
- 8일차 - 41 ~ 
+ 8일차 - 41 ~ 48강.
 
 
 
@@ -95,16 +95,103 @@ SSH를 통한 파일 전송.
 
  # 이동형 장치 마운트.
 
+설명.
+컴퓨터에 USB를 꼽았을때 VirtualBox에서 USB를 인식하도록 해야된다.
+
+확장팩 설치.
+https://www.virtualbox.org/wiki/Downloads -> All supported platforms 선택.
+
+VirtualBox 설정.
+확장팩 설치 -> 리눅스 종료 -> 설정 -> USB 3.0 선택 -> USB 꼽고 추가.
+
+USB 확인하기.
+lsblk : 하드디스크, usb같은 디바이스를 확인.
+
+디렉토리.
+/mnt : 옛날에 USB를 연결해서 사용하던 디렉토리.
+/media : 최근에 USB를 연결해서 사용하는 디렉토리.
+/dev : 디바이스 장치들이 모여있는 디렉토리.
+
+USB 연결하기.
+sudo mount /dev/USB파티션 연결할디렉토리.
+sudo umount 연결한디렉토리
+
+가상머신의 문제점.
+설정에서 USB를 제거해도 lsblk에서는 연결상태로 존재한다.
+USB 파일 포맷이 리눅스에서 읽을 수 없거나 용량이 초과될 경우 mount 실패할 수 있다.
 
 
 
+ # 톰캣 9.0 서버 설치.
+
+설치 방법.
+윈도우에 톰캣설치 -> 알드라이브 SSH방식을 통해 리눅스에 파일 전송 
+-> usr에 톰캣 파일 옮기기 -> 권한 바꾸기.
+
+usr에 톰캣 파일 옮기기.
+sudo mv 파일위치 파일을옮길위치.
+
+w3m 설치.
+apt install w3m.
+
+톰캣 서버 실행 확인.
+w3m http://localhost:8080 ;
+ps -ef | grep tomcat ; 
+
+톰캣 서버 실행/종료.
+실행 : 톰캣디렉토리/startup.sh
+종료 : 톰캣디렉토리/shutdown.sh
 
 
 
+ # 톰캣 서비스를 위한 사용자 그룹 설정하기.
+
+유저 확인하기.
+id 유저이름
+
+그룹 생성하기.
+sudo groupdadd 그룹이름 ;
+
+그룹 추가하기.
+sudo usermod -a -G 그룹이름 사용자이름 ;
+로그아웃 후 로그인 해야 그룹이 명확하게 추가된다.
+
+그룹 권한 바꾸기.
+sudo chown -R root:그룹이름 디렉토리이름 ;
+-R : 디렉토리 하위 모든 파일 권한 변경.
+
+그룹 권한 설정.
+sudo chmod -R g+w logs : 톰캣 logs 하위 모든 파일 group권한에 w추가. 
+sudo chmod -R g+rx config : 톰캣 config 하위 모든 파일 group권한에 rx 추가.
+
+환경변수 설정.
+sudo nano /etc/environment -> ":원하는경로추가설정"
+-> source /etc/environment -> 로그아웃 -> 로그인.
 
 
 
+ # 톰캣 80번 포트 사용할 수 있게 하기 authbind.
 
+설정 바꾸기.
+톰캣 config -> server.xml에서 8080에서 원하는 포트번호로 바꾸기.
+
+주의사항.
+1024번호 이하의 포트를 사용하기 위해서는 인증요청으로 실행해야된다.
+authbind를 통해 인증을 할 수 있다.
+
+포트포워딩.
+8080, 80번 포트포워딩을 한다.
+
+authbind 설치.
+apt install authbind.
+
+byport.
+/etc/authbind에 존재한다.
+사용하고 싶은 포트번호를 저장하는 디렉토리.
+sudo touch 포트번호 ;
+sudo chmod 550 포트번호 ; ( 실행권한 부여 )
+sudo chown root:tomcat 포트번호 ; 
+nano startup.sh -> exec authbind --deep "~~~~" start "~~" ; ( authbind --deep을 추가 )
 
 
 
