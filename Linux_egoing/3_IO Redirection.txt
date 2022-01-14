@@ -1,0 +1,67 @@
+
+ IO Redirection.
+ 15 ~ 17강.
+
+
+
+ # Output.
+
+IO Redirection 
+Input Output Redirection : 입력 출력 방향을 바꾼다.
+
+명령어.
+cat 파일이름 : 파일을 실행.
+A > B : A의 결과를 B에 저장한다.
+
+유닉스( 리눅스 ) 이해.
+Unix Process : 유닉스 명령어.
+Command-Line Arguments : 어떠한 명령어를 실행할때 매개변수들.
+Standard Output : 모니터에 출력되는 결과물.
+Standard Error : Process 실행 결과 오류가 발생하는 경우 결과물.
+
+Standard Output 파일 저장.
+명령어 1> 파일이름 
+Standard Output을 저장하는 것이 기본값이므로 생략가능.
+
+Standard Error 파일 저장.
+명령어 2> 파일이름
+2> 를 띄어쓰면 제대로 저장이 안된다.
+
+
+
+ # Input.
+
+cat.
+사용자가 입력하는 정보를 그대로 출력한다.
+
+cat을 통한 input.
+cat < 파일이름 : 파일에 저장된 데이터를 cat을 통해 실행시킨다.
+
+명령어.
+head -n1 파일이름 : 파일에서 맨 위에 한줄만 출력.
+
+Standard Input.
+A < B 에서 B가 Standard Input을 의미한다.
+
+IO Stream.
+데이터가 Input, Ouput을 거쳐서 실행되는 형태를 의미.
+
+
+
+ # append.
+
+append.
+A > B : B파일에 A의 내용을 덮어씌운다.
+A >> B : B파일에 A의 내용을 추가한다.
+
+<< 예시.
+cat << abc
+적고 싶은 내용.
+abc
+abc가 끝내는 문자로 abc를 호출하기 전까지 모든 내용을 입력가능.
+
+디렉토리.
+/dev/null : unix에 휴지통 역할을 하는 디렉토리.
+
+
+

@@ -1,0 +1,58 @@
+
+ 셸과 셸 스크립트.
+ 18 ~ 21강.
+
+
+
+ # Intro.
+
+Unix( Linux ).
+쉘 : 사용자의 입력을 해석하는 장치.
+쉘을 통해 사용자의 입력을 Kernel이 이해할 수 있게 전달하고 Kernel은 하드웨어에 입력을 전달하여 처리한다.
+
+Shell과 Kernel 분리의 장점.
+내가 원하는 Shell을 선택하여 Kernel을 사용할 수 있다.
+
+
+
+ # bash vs zsh.
+
+명령어.
+echo "hello" : hello를 출력.
+echo $0 : 어떠한 쉘을 사용하는지 알려줌. ( bsh, zsh )
+
+zsh 설치.
+sudo apt-get install zsh
+
+zsh 실행.
+zsh
+
+
+
+ # Shell Script 소개.
+
+Shell Script.
+순서대로 실행해야 되는 소스코드를 저장하는 장소.
+
+
+
+ # Shell Script 사례.
+
+/bin 디렉토리.
+실행 파일들을 모아두는 디렉토리.
+
+파일에 작성해야 되는 것들.
+#!프로그램 : 어떤 프로그램으로 실행될 것인지 작성.
+예 - #!/bin/bash : /bin 디렉토리에 bash 프로그램으로 실행.
+
+if 조건문 예시.
+if ! [ -d 파일이름 ] ; then 
+	mk bak
+fi
+
+권한 명령어.
+chmod 권한부여 파일이름
+
+
+
+

@@ -1,0 +1,92 @@
+
+ 디렉토리 구조와 파일 찾는법.
+ 22 ~ 25강.
+
+
+
+ # 디렉토리 구조1.
+
+/bin.
+User Binaries.
+실행 파일 저장.
+Binary는 실행가능한 프로그램을 의미한다.
+
+/sbin.
+System Binaries.
+시스템 관련 실행 파일 저장.
+
+/etc.
+Configuration Files.
+설정 관련 파일 저장.
+
+/dev.
+Device Files.
+장치 관련 파일 저장.
+
+/proc.
+Process Information.
+시스템 프로세스 관련 정보 파일 저장.
+
+/var.
+Variable Files.
+바뀔수 있는 유동적인 파일 저장.
+
+/tmp.
+Temporary Files.
+임시 파일을 저장.
+재부팅하면 모두 삭제된다.
+
+
+
+ # 디렉토리 구조2.
+
+/home.
+Home Directories.
+사용자에 따라 구분된 파일 저장.
+cd ~ : 사용자의 홈 디렉토리로 이동. ( /home/user이름 )
+
+/boot.
+Boot Loader Files.
+
+/lib.
+System Libraries.
+/bin, /sbin이 공통으로 사용하는 공간.
+
+/opt.
+Optional add-on Applications.
+
+/usr.
+User Programs.
+/usr/bin, /usr/sbin 등을 가지고 있다.
+예전에 실행과 관련없는 실행파일을 저장하기 위해 만들었다.
+
+
+
+ # 파일 찾는 법 - location와 find.
+
+locate.
+locate 파일이름 ;
+디렉토리를 확인하는 것이 아닌 mlocate에서 데이터를 확인한다. ( 성능 유리 )
+mlocate : locate가 사용하는 데이터베이스.
+
+mlocate 업데이트.
+sudo updatedb ;
+
+find.
+find 디렉토리경로 -name 파일이름 : 디렉토리경로에서 파일이름인 파일을 찾겠다.
+디렉토리를 확인한다. ( 성능이 안 좋을 수 있고, 최신화가 필요 없다 )
+
+
+
+ # 파일 찾는 법 - whereis와 $PATH.
+
+whereis 사용법.
+whereis 파일
+실행하면 "파일위치" "설명서위치"가 나온다.
+
+$PATH.
+echo $PATH : 실행 확인 경로 ( 환경변수 )
+$PATH 실행 경로 안에 어떠한 파일을 넣어놓으면 어느 경로에서든 실행가능하다.
+
+
+
