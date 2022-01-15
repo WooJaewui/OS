@@ -1,0 +1,63 @@
+
+ 사용자.
+ 34 ~ 37강.
+
+
+
+ # 다중 사용자1.
+
+다중 사용자의 복잡성.
+파일에 사용자마다 권한을 설정해야된다.
+Linux는 다중 사용자 운영체제이다.
+
+
+
+ # 다중 사용자2 - id, who.
+
+id.
+id : id와 관련된 정보를 보여준다.
+uid - user id, gid - group id
+
+who.
+who : 현재 누가 이 서버에 접속해 있는지 알 수 있다.
+
+
+
+ # 관리자와 일반 사용자.
+
+sudo super( root ) user의 특징.
+sudo 명령어로 실행.
+#표시가 있으면 super user이다.
+/root 디렉토리에 있다. ( super user만 사용가능 )
+
+일반 user의 특징.
+명령어로 실행 ( 로그인한 user로 실행 )
+$표시가 있으면 일반 user이다.
+/home/user이름 디렉토리에 있다.
+
+su 명령어.
+su - : super user로 변경.
+su - root : super user로 변경.
+su - 유저이름 : 일반 user로 변경.
+
+super user unlock 풀기.
+sudo passwd -u root
+
+
+
+ # 사용자 추가.
+
+사용자 추가 명령어.
+sudo useradd useradd -m duru
+
+비밀번호 설정.
+sudo passwd 유저이름
+
+슈퍼 유저 그룹 추가.
+sudo usermod -a -G sudo 사용자이름 ( sudo 그룹에 사용자를 추가 )
+
+
+
+
+
+
