@@ -1,0 +1,207 @@
+
+ 인터넷 네트워크 그리고 서버.
+ 45 ~ 55강.
+
+
+
+ # 인터넷 1.
+
+인터넷 용어.
+request : 클라이언트가 서버에게 어떠한 요청 하는 것.
+response : 클라이언트의 request에 대해 서버가 응답 하는 것.
+client : 사용자 컴퓨터.
+server : 서버 컴퓨터.
+ip address : 클라이언트가 서버에게 요청하기 위한 주소.
+domain name : ip address를 대신하는 이름. 
+
+ip 주소 확인.
+ping google.com ( 구글 ip address 확인 )
+
+DNS server.
+domain name이 어떤 ip인지 알고 있어서 domain name으로 request하면 ip address로 찾아갈 수 있게 해준다.
+
+
+
+ # 인터넷 2.
+
+ip 확인하기.
+ip addr -> inet에 앞부분에 있는 ip가 ip address이다. ( 실제 ip address를 보여준다 - private Ip )
+curl ipinfo.io/ip : 접속에 결과값을 확인. ( router의 주소를 알려줌 )
+
+Router 공유기.
+하나의 IP를 가지고 여러 장치와 통신 할 수 있다.
+통신사와 Router가 연결되고 Router가 각각의 장치들과 통신한다.
+public address : ip와 같이 client가 직접 request할 수 있는 address.
+private address : 내선번호처럼 자체적으로 사용할 수 없고, Router로만 사용가능.
+private address는 Router내에 장치끼리는 서로 통신가능.
+
+
+
+ # apche 웹서버 1.
+
+web server.
+항상 켜져있다가 클라이언트의 요청중에 server와 관련된 요청이 있을 경우 response한다.
+web server의 종류에는 apache, nginx, IIS 등이 있다.
+
+
+
+ # apache 웹서버 2.
+
+apache 설치.
+sudo apt-get update
+sudo apt-get install apache2
+
+apache 실행 / 정지.
+sudo service apache2 start
+sudo service apache2 stop
+sudo service apache2 restart
+
+apache.
+apache는 여러개의 요청이 들어올 수 있는 서버이기 때문에 여러개가 실행되어 있다.
+htop에서 f4 apache를 통해 확인 가능.
+
+elinks.
+sudo apt-get install elinks -> elinks -> ip입력 -> 홈페이지 접속가능.
+elinks 내ip -> ubuntu apache창이 뜸.
+q를 누르면 종료.
+
+localhost.
+127.0.0.1과 같은 의미이다.
+자신의 컴퓨터 server에 접속한다.
+elinks 127.0.0.1 == elinks http://localhost => ubuntu apache창이 뜬다.
+
+
+
+ # apache 웹서버 3.
+
+apache 관련 설정.
+/etc/apache2에 apache 관련 설정파일들이 저장되어 있다.
+apache2.conf 파일에 자세한 설명이 적혀 있다.
+
+index 페이지 확인하기.
+/etc/apache2/sites-enabled/000-default.conf 파일에 DocumentRoot 라는 저장소가 적혀있다.
+DocumentRoot에 index.html을 작성한 후 elinks 127.0.0.1/index.html하면 작성한 코드가 실행.
+
+
+
+ # apache 웹서버 4.
+
+log 확인하기.
+/etc/apache2/sites-enabled/000-default.conf 파일에 ErrorLog와 CustomLog 경로 확인.
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined.
+기본설정 /var/log/apache2로 되어 있다.
+
+/var/log/apache2/
+access.log : 서버에 접속하면 마지막에 접속기록이 남겨진다. ( tail을 통해 끝부분을 출력할 수 있다 )
+error.log : apatch 서버에 에러가 발생했을 때 기록이 남겨진다.
+
+
+
+ # 원격제어 ssh 1.
+
+리눅스의 장점.
+일반적인 데스크탑의 OS보다는 server와 IoT( 사물인터넷 )에서 큰 장점을 가진다.
+
+ssh.
+원격으로 다른 컴퓨터를 제어할 수 있다.
+클라이언트와 서버에 SSH가 설치되어 있어야된다.
+ssh가 연결되면 client에서 명령어를 입력하면 server에서 그 명령어가 실행되고 결과를 client에게 보낸다.
+
+
+
+ # 원격제어 ssh 2.
+
+apt 삭제.
+sudo apt-get remove 프로그램이름 : 일반적인 삭제.
+sudo apt-get purge 프로그램이름 : 강력한 삭제.
+
+openssh-server 설치.
+sudo apt-get install openssh-server
+oepnssh에는 다양한 프로그램이 있다. ( openssh-server, openssh-client )
+
+openssh-server 설치 확인.
+sudo ps aux | grep ssh -> sshsd라는 프로세스가 실행중이면 설치완료.
+
+ssh 원리.
+ssh-server : oepnssh-server를 설치하고 ssh-client의 요청을 실행하고 response한다.
+ssh-client : oepnssh-clinet를 설치하고 server를 원격 제어할 수 있다.
+
+원격 실행.
+ssh user@ip주소 : user로 접속 -> yes, 비밀번호 입력.
+
+원격 끊기.
+exit.
+
+원격 접속 확인.
+prompt가 똑같아진다. ( ex - 유저이름: ~ ... ) 
+
+
+
+ # 포트란 무엇인가 ?
+
+포트 번호를 사용한 ssh 원격.
+ssh -p 22 user@ip주소 ( ssh는 포트번호 22번을 사용 )
+
+포트번호.
+FTP : 21.
+ssh : 22.
+telnet : 23.
+web server : 80. 
+WAS : 8080. 
+1024안쪽 포트번호는 미리 정해진 중요한 포트번호들이다.
+정해지지 않은 포트번호를 사용할 경우 1024 이후 번호를 사용하는 것이 좋다.
+
+web 포트 사용.
+웹 브라우저 요청 -> 80번 포트 web server를 찾아감.
+웹 브라우저 요청 -> 8080번 포트 WAS를 찾아감.
+
+ssh 포트 사용.
+SSH 클라이언트 요청 -> 22번 포트 SSH server를 찾아감.
+
+ssh config 파일.
+/etc/ssh/sshd_config에서 포트번호를 수정할 수 있다.
+
+
+
+ # 포트포워딩 소개.
+
+ISP Internet Service Provider.
+인터넷 접속 서비스, 웹사이트 구축 등을 제공하는 회사를 의미한다. ( KT, SK, LG 등 )
+
+ip.
+public ip address : router 외부에 존재하는 ip, 다른 사람들이 접속하는 ip.
+private ip address : router 내부에 존재하는 ip, router의 포트포워딩을 통해서만 접근가능.
+
+포트포워딩.
+ip:포트번호 == private ip address.
+포트번호와 매칭된 private ip address를 찾아간다.
+
+공유기 router.
+기본적으로 web server를 가지고 있다.
+default grateway : 공유기 내부에서만 사용되는 ip주소.
+
+
+
+ # 포트포워딩 실습.
+
+내 ip 알아내기.
+ip addr -> inet ip주소 확인.
+ifconfig -> inet addr 확인.
+
+공유기 ip 알아내기.
+ip route -> default via ip주소 확인.
+
+설정.
+고급설정 -> NAT/라우터 관리 -> 포트포워드 설정 -> 내부 IP주소
+외부포트 : 외부에서 접근할 포트번호.
+내부포트 : 내부에서 사용할 포트번호.
+
+포워딩 순서.
+1. 라우터에서 외부포트 내부포트 설정을한다.
+2. 클라이언트는 접속하려는 ip주소와 외부포트 번호를 입력한다.
+3. ip주소에 맞는 라우터가 외부포트를 보고 내부기기에 포트포워딩을 통해 연결해준다.
+4. 내부기기는 클라이언트에 request에 응답하여 response한다.
+
+
+
