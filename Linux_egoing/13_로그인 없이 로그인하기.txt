@@ -1,0 +1,52 @@
+
+ 로그인 없이 로그인하기.
+ 63 ~ 65강 - 최종.
+
+
+
+ # ssh public private key.
+
+ssh-keygen.
+keygeneration ssh키를 생성한다는 의미.
+
+ssh-keygen 생성 명령어.
+ssh-keygen : /home/유저이름/.ssh/id_rsa를 생성한다. 
+enter를 누르면 생성되고, 비밀번호를 설정한다.
+
+ssh-keygen 생성 확인.
+/home/유저이름/.ssh/ 에서 id_rsa와 id_rsa.pub을 확인.
+id_rsa는 private key를 의미하고, id_rsa.pub은 public key를 의미한다.
+
+authorized_keys.
+id_rsa_pub을 authorized_keys 뒤에 추가하면 ssh를 통한 로그인이 가능하다.
+
+authorized_keys 자동 사용하기.
+ssh-copy-id user@ip주소.
+
+
+
+ # rsync.
+
+rsync 설명.
+rsync는 기본적으로 ssh를 활용해서 sync한다.
+rsync와 ssh와 cron을 통해 일정 시간마다 지속적으로 어떠한 행동을 실행시킬 수 있다.
+
+
+
+ # RSA.
+
+암호화 관련 용어.
+encrypt 암호화 : 정보를 알아볼 수 없도록 만든다.
+decrypt 복호화 : 알아볼 수 없도록 만든 정보를 알아볼 수 있도록 만든다.
+대칭키방식 : encrypt, decrypt에서 하나의 key를 사용한다. ( key 1개 )
+비대칭키방식 : encrypt, decrypt에서 서로 다른 key를 사용한다. ( public key 1개, private key 1개 )
+
+RSA Rivest-Shamir-Adleman.
+공개키 암호시스템의 가장 유명한 기법중 하나이다. ( 비대칭키방식 )
+
+RSA 원리.
+1. SSH server에서 random key를 client에 보낸다.
+2. SSH client는 random key를 id_rsa를 통해 암호화해서 SSH server에 보낸다.
+3. SSH server는 authorized_keys에 저장된 id_rsa_pub를 통해 암호화된 내용을 복호화해서 random key와 확인.
+
+
